@@ -1,0 +1,230 @@
+.statistics-page-modern {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.stats-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.stat-card-modern {
+  background: var(--surface);
+  padding: 35px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-mint);
+}
+
+.stat-card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card-modern h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+}
+
+.main-progress {
+  grid-column: 1 / -1;
+}
+
+.progress-text-modern {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.status-stats-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.status-item-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.status-item-modern:last-child {
+  border-bottom: none;
+}
+
+.status-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.status-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.status-value.completed {
+  color: var(--success);
+}
+
+.status-value.in-progress {
+  color: var(--warning);
+}
+
+.status-value.not-started {
+  color: var(--error);
+}
+
+.category-stats-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-item-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.category-item-modern:last-child {
+  border-bottom: none;
+}
+
+.category-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.category-count {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.recommendations-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recommendation-item {
+  padding: 15px;
+  background: var(--surface-muted);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.recommendation-item.success {
+  border-left-color: var(--success);
+  background: linear-gradient(135deg, var(--mint-50), var(--mint-100));
+}
+
+.quick-actions-stats-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.action-link-stats {
+  background: var(--gradient-mint);
+  color: var(--text-on-primary);
+  padding: 18px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.action-link-stats:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-on-primary);
+}
+
+@media (max-width: 768px) {
+  .stats-grid-modern {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card-modern {
+    padding: 25px;
+  }
+  
+  .status-item-modern {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .category-item-modern {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .quick-actions-stats-modern {
+    max-width: 100%;
+  }
+}
+.page-title {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+/* Исправление невидимого текста */
+.statistics-page-modern .page-header-modern h1 {
+  color: var(--text-primary) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.statistics-page-modern .page-header-modern p {
+  color: var(--text-secondary) !important;
+  font-size: 1.2rem;
+}

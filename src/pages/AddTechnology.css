@@ -1,0 +1,355 @@
+.add-technology-page-modern {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-header-modern {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page-header-modern h1 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--text-primary), var(--mint-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-header-modern p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.technology-form-modern {
+  background: var(--surface);
+  padding: 50px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.form-group-modern {
+  margin-bottom: 30px;
+}
+
+.form-label-modern {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.required {
+  color: var(--error);
+}
+
+.form-input-modern,
+.form-textarea-modern,
+.form-select-modern {
+  width: 100%;
+  padding: 18px 20px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  background: var(--surface);
+  transition: var(--transition);
+  color: var(--text-primary);
+}
+
+.form-input-modern:focus,
+.form-textarea-modern:focus,
+.form-select-modern:focus {
+  outline: none;
+  border-color: var(--mint-primary);
+  box-shadow: 0 0 0 3px rgba(0, 201, 177, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-textarea-modern {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.form-select-modern {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 20px;
+  padding-right: 50px;
+}
+
+.form-actions-modern {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+
+/* Стили для мятной кнопки с эффектом блеска */
+.btn-primary-modern {
+  background: linear-gradient(135deg, #00d4b8, #00b4a0, #009488);
+  color: white !important;
+  border: none;
+  padding: 18px 35px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 60px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 25px rgba(0, 212, 184, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект блеска - движущийся градиент */
+.btn-primary-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 1s ease;
+}
+
+.btn-primary-modern:hover::before {
+  left: 150%;
+}
+
+/* Внешнее свечение при наведении */
+.btn-primary-modern::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #00f8d4, #00d4b8, #00b4a0);
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary-modern:hover::after {
+  opacity: 1;
+}
+
+.btn-primary-modern:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(0, 212, 184, 0.6),
+    0 0 30px rgba(0, 248, 212, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  background: linear-gradient(135deg, #00f8d4, #00d4b8, #00c0a8);
+}
+
+.btn-primary-modern:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 5px 15px rgba(0, 212, 184, 0.4),
+    0 0 15px rgba(0, 248, 212, 0.3);
+}
+
+/* Стили для светло-серой кнопки с эффектом блеска */
+.btn-secondary-modern {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9, #e2e8f0);
+  color: #475569 !important;
+  border: 2px solid #e2e8f0;
+  padding: 18px 35px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 60px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(148, 163, 184, 0.15);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Эффект блеска для серой кнопки */
+.btn-secondary-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 1s ease;
+}
+
+.btn-secondary-modern:hover::before {
+  left: 150%;
+}
+
+.btn-secondary-modern:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 30px rgba(148, 163, 184, 0.25),
+    0 0 20px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #ffffff, #f8fafc, #f1f5f9);
+  border-color: #cbd5e1;
+  color: #334155 !important;
+}
+
+.btn-secondary-modern:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(148, 163, 184, 0.2);
+}
+
+/* Анимация иконок */
+.btn-icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary-modern:hover .btn-icon {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.btn-secondary-modern:hover .btn-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* Анимация появления кнопок */
+@keyframes buttonEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.btn-primary-modern {
+  animation: buttonEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.btn-secondary-modern {
+  animation: buttonEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+/* Пульсация для привлечения внимания */
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 25px rgba(0, 212, 184, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+  50% {
+    box-shadow: 
+      0 8px 30px rgba(0, 212, 184, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  }
+}
+
+.btn-primary-modern {
+  animation: 
+    buttonEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    gentlePulse 3s ease-in-out 1s infinite;
+}
+
+@media (max-width: 768px) {
+  .technology-form-modern {
+    padding: 30px;
+  }
+  
+  .form-actions-modern {
+    flex-direction: column;
+  }
+  
+  .page-header-modern h1 {
+    font-size: 2rem;
+  }
+  
+  .btn-primary-modern,
+  .btn-secondary-modern {
+    width: 100%;
+    text-align: center;
+    padding: 16px 28px;
+    min-height: 56px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary-modern:hover,
+  .btn-secondary-modern:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
+  
+  /* Отключаем сложные анимации на мобильных */
+  .btn-primary-modern::before,
+  .btn-secondary-modern::before {
+    display: none;
+  }
+}
+.page-title {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+/* Исправление невидимого текста */
+.add-technology-page-modern .page-header-modern h1 {
+  color: var(--text-primary) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.add-technology-page-modern .page-header-modern p {
+  color: var(--text-secondary) !important;
+  font-size: 1.2rem;
+}
