@@ -29,12 +29,10 @@ function App() {
     notStarted: 0
   });
 
-  // Состояние для отслеживания загрузки данных
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Проверяем, что данные загружены (technologies не пустой массив)
-    if (technologies && technologies.length > 0) {
+    if (technologies && technologies.length >= 0) {
       const newStats = {
         total: technologies.length,
         completed: technologies.filter(t => t.status === 'completed').length,
@@ -43,22 +41,22 @@ function App() {
       };
       setStats(newStats);
       setIsLoading(false);
-    } else if (technologies && technologies.length === 0) {
-      // Если technologies пустой массив (данные загружены, но нет технологий)
-      setStats({
-        total: 0,
-        completed: 0,
-        inProgress: 0,
-        notStarted: 0
-      });
-      setIsLoading(false);
     }
   }, [technologies]);
 
-  // Показываем индикатор загрузки
+  // Получаем имя репозитория из URL для GitHub Pages
+  const getBasename = () => {
+    const url = window.location.href;
+    if (url.includes('github.io')) {
+      const repoName = url.split('/')[3]; // Получаем имя репозитория
+      return repoName ? `/${repoName}` : '';
+    }
+    return '';
+  };
+
   if (isLoading) {
     return (
-      <Router>
+      <Router basename={getBasename()}>
         <div className="App">
           <Navigation />
           <div style={{ 
@@ -75,7 +73,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename={getBasename()}>
       <div className="App">
         <Navigation />
         <Routes>
@@ -130,6 +128,13 @@ function App() {
               />
             } 
           />
+          {/* Добавляем fallback route для GitHub Pages */}
+          <Route path="*" element={
+            <Home 
+              progress={progress}
+              stats={stats}
+            />
+          } />
         </Routes>
       </div>
     </Router>
