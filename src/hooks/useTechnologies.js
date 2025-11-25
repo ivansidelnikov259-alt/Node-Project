@@ -38,20 +38,25 @@ const initialTechnologies = [
 function useTechnologies() {
   const [technologies, setTechnologies] = useLocalStorage('technologies', initialTechnologies);
 
+  // Гарантируем, что technologies всегда массив
+  const safeTechnologies = Array.isArray(technologies) ? technologies : initialTechnologies;
+
   const updateStatus = (techId, newStatus) => {
-    setTechnologies(prev =>
-      prev.map(tech =>
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return current.map(tech =>
         tech.id === techId ? { ...tech, status: newStatus } : tech
-      )
-    );
+      );
+    });
   };
 
   const updateNotes = (techId, newNotes) => {
-    setTechnologies(prev =>
-      prev.map(tech =>
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return current.map(tech =>
         tech.id === techId ? { ...tech, notes: newNotes } : tech
-      )
-    );
+      );
+    });
   };
 
   const addTechnology = (techData) => {
@@ -61,41 +66,51 @@ function useTechnologies() {
       status: 'not-started',
       notes: ''
     };
-    setTechnologies(prev => [...prev, newTech]);
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return [...current, newTech];
+    });
   };
 
   const markAllCompleted = () => {
-    setTechnologies(prev =>
-      prev.map(tech => ({ ...tech, status: 'completed' }))
-    );
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return current.map(tech => ({ ...tech, status: 'completed' }));
+    });
   };
 
   const resetAll = () => {
-    setTechnologies(prev =>
-      prev.map(tech => ({ ...tech, status: 'not-started' }))
-    );
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return current.map(tech => ({ ...tech, status: 'not-started' }));
+    });
   };
 
   const importTechnologies = (newTechnologies) => {
     setTechnologies(prev => {
-      const existingIds = new Set(prev.map(tech => tech.id));
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      const existingIds = new Set(current.map(tech => tech.id));
       const technologiesToAdd = newTechnologies.filter(tech => !existingIds.has(tech.id));
-      return [...prev, ...technologiesToAdd];
+      return [...current, ...technologiesToAdd];
     });
   };
 
   const deleteTechnology = (techId) => {
-    setTechnologies(prev => prev.filter(tech => tech.id !== techId));
+    setTechnologies(prev => {
+      const current = Array.isArray(prev) ? prev : initialTechnologies;
+      return current.filter(tech => tech.id !== techId);
+    });
   };
 
   const calculateProgress = () => {
-    if (technologies.length === 0) return 0;
-    const completed = technologies.filter(tech => tech.status === 'completed').length;
-    return Math.round((completed / technologies.length) * 100);
+    const techArray = Array.isArray(technologies) ? technologies : initialTechnologies;
+    if (techArray.length === 0) return 0;
+    const completed = techArray.filter(tech => tech.status === 'completed').length;
+    return Math.round((completed / techArray.length) * 100);
   };
 
   return {
-    technologies,
+    technologies: safeTechnologies,
     updateStatus,
     updateNotes,
     addTechnology,
