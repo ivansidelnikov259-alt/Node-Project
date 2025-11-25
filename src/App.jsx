@@ -29,15 +29,50 @@ function App() {
     notStarted: 0
   });
 
+  // Состояние для отслеживания загрузки данных
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const newStats = {
-      total: technologies.length,
-      completed: technologies.filter(t => t.status === 'completed').length,
-      inProgress: technologies.filter(t => t.status === 'in-progress').length,
-      notStarted: technologies.filter(t => t.status === 'not-started').length
-    };
-    setStats(newStats);
+    // Проверяем, что данные загружены (technologies не пустой массив)
+    if (technologies && technologies.length > 0) {
+      const newStats = {
+        total: technologies.length,
+        completed: technologies.filter(t => t.status === 'completed').length,
+        inProgress: technologies.filter(t => t.status === 'in-progress').length,
+        notStarted: technologies.filter(t => t.status === 'not-started').length
+      };
+      setStats(newStats);
+      setIsLoading(false);
+    } else if (technologies && technologies.length === 0) {
+      // Если technologies пустой массив (данные загружены, но нет технологий)
+      setStats({
+        total: 0,
+        completed: 0,
+        inProgress: 0,
+        notStarted: 0
+      });
+      setIsLoading(false);
+    }
   }, [technologies]);
+
+  // Показываем индикатор загрузки
+  if (isLoading) {
+    return (
+      <Router>
+        <div className="App">
+          <Navigation />
+          <div style={{ 
+            padding: '40px', 
+            textAlign: 'center',
+            fontSize: '18px',
+            color: '#666'
+          }}>
+            Загрузка данных...
+          </div>
+        </div>
+      </Router>
+    );
+  }
 
   return (
     <Router>
